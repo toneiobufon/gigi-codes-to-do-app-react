@@ -3,6 +3,7 @@ import React from "react";
 import moment from 'moment';
 import './ToDoList.css'
 import {Input} from "../Input/Input";
+import  {Item} from "../Item/Item";
 
 
 class TodoList extends React.Component{
@@ -53,6 +54,19 @@ updateInput(key, value){
 	this.setState({[key]: value})
 }
 
+crossItem(id){
+	let list = this.state.list;
+
+	const item = list.findIndex((item) => item.id === id);
+	let updatedItem = list[item];
+
+	updatedItem.checked = !updatedItem.checked;
+
+	const newTodoList = [...list];
+	newTodoList[item]= updatedItem;
+	this.setState({list:newTodoList})
+}
+
 render(){
 	console.log(this.state.list);
 	return <div className="ToDoContainer">
@@ -67,6 +81,19 @@ render(){
 
 			</div>
 			<ul className="ListCont"></ul>
+			{this.state.list.map((item) => (
+				<Item 
+				key={item.id}
+				checked={item.checked} 
+				id={item.id} 
+				crossItem={() => this.crossItem(item.id)}
+				value={item.value}
+				date={item.date}
+				/>
+			)
+				
+
+			)}
 
 		</div>
 	</div>
