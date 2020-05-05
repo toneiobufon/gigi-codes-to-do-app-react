@@ -72,7 +72,7 @@ render(){
 	return <div className="ToDoContainer">
 		<div className="ToDoList">
 			<div className="TodoHeader">
-				<h2>To Do</h2>
+				<h2>Que hacer?</h2>
 				<span className="DateHeading">{moment().format('lll')}</span>
 				<Input 
 				onChange={(e) => this.updateInput('item', e.target.value)}
