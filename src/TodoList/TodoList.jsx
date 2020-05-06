@@ -79,7 +79,7 @@ deactivateEditing(e, id){
 	const item = list.findIndex((item) => item.id === id);
 	let updatedItem = list[item];
 	updatedItem.editing = false;
-
+	updatedItem.date= moment().format('LT');
 	const newTodoList = [...list];
 	newTodoList[item]= updatedItem;
 	this.setState({list:newTodoList})
