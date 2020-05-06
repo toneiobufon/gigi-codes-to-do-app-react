@@ -1,7 +1,16 @@
 import React from "react";
 import "./Item.css";
 
-export const Item = ({ checked, id, crossItem, value, date}) => {
+export const Item = ({ 
+    checked, 
+    id, 
+    crossItem, 
+    value, 
+    date, 
+    editingState, 
+    setEditing, 
+    deactivateEditing, 
+    editTask}) => {
 
     return (
     
@@ -14,10 +23,16 @@ export const Item = ({ checked, id, crossItem, value, date}) => {
             className="Checkbox"
             />
 
-            <p className={checked ? "Strike ToDoText" : "ToDoText"}> {value}</p>
-        
-
-
+            { !editingState && (
+                <p className={checked ? "Strike ToDoText" : "ToDoText"} onClick={setEditing}>
+                    {value}
+                    </p>
+                    )}
+                {editingState && (
+                <form className="Editing" onSubmit={deactivateEditing}>
+                    <input className="ToDoText" onChange={editTask} value={value}/>
+                    </form>
+                    )}
         </div>
         <span className="DateText">{date}</span>
     </li>
