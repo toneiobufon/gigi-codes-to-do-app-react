@@ -17,13 +17,15 @@ constructor(props){
 			id: 1, 
 			value: " Learn to learn",
 			date: "5:00 pm",
-			checked: false
+			checked: false,
+			editing: false
 			},
 			{
 				id: 2, 
 				value: " Learn to learn learning",
 				date: "6:00 am",
-				checked: false
+				checked: false,
+				editing: false
 				}
 		]
 	}
@@ -37,7 +39,8 @@ addItem(e){
 			id:1 + Math.random(),
 			value: this.state.item.slice(),
 			date:moment().format("LT"),
-			checked: false
+			checked: false,
+			editing: false
 		};
 	
 		let list = [...this.state.list];
@@ -52,6 +55,20 @@ addItem(e){
 
 updateInput(key, value){
 	this.setState({[key]: value})
+}
+
+editTask(id, value, ){
+	let list = this.state.list;
+
+	const item = list.findIndex((item) => item.id === id);
+	let updatedItem = list[item];
+
+	updatedItem.value = value;
+	const newTodoList = [...list];
+	newTodoList[item]= updatedItem;
+	this.setState({list:newTodoList})
+
+
 }
 
 crossItem(id){
