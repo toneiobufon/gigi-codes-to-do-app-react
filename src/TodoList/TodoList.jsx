@@ -72,6 +72,20 @@ setEditing(id){
 
 }
 
+deactivateEditing(e, id){
+	e.preventDefault();
+	let list = this.state.list;
+
+	const item = list.findIndex((item) => item.id === id);
+	let updatedItem = list[item];
+	updatedItem.editing = false;
+
+	const newTodoList = [...list];
+	newTodoList[item]= updatedItem;
+	this.setState({list:newTodoList})
+
+}
+
 editTask(id, value, ){
 	let list = this.state.list;
 
@@ -115,6 +129,10 @@ render(){
 			<ul className="ListCont"></ul>
 			{this.state.list.map((item) => (
 				<Item 
+				editingState={item.editing}
+				setEditing={() => this.setEditing(item.id)}
+				deactivateEditing={(e) => this.deactivateEditing(e, item.id)}
+				editTask={(e) => this.editTask(item.id, e.target.value)}
 				key={item.id}
 				checked={item.checked} 
 				id={item.id} 
