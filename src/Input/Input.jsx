@@ -9,12 +9,12 @@ export const Input= ({onSubmit, value, onChange}) => {
             <input
             className="InputBar"
             type="text"
-            placeholder="Enter To Do Item"
+            placeholder="Agrega algo!"
             value={value}
             onChange={onChange}
             
             />
-            <button className="SubmitBttn">Submit</button>
+            <button className="SubmitBttn">Agregar</button>
 
         </form>
     );
