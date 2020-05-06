@@ -57,6 +57,21 @@ updateInput(key, value){
 	this.setState({[key]: value})
 }
 
+
+setEditing(id){
+
+	let list = this.state.list;
+
+	const item = list.findIndex((item) => item.id === id);
+	let updatedItem = list[item];
+	updatedItem.editing = true;
+
+	const newTodoList = [...list];
+	newTodoList[item]= updatedItem;
+	this.setState({list:newTodoList})
+
+}
+
 editTask(id, value, ){
 	let list = this.state.list;
 
