@@ -15,14 +15,14 @@ constructor(props){
 		list: [
 			{
 			id: 1, 
-			value: " Learn to learn",
+			value: " Practice code",
 			date: "5:00 pm",
 			checked: false,
 			editing: false
 			},
 			{
 				id: 2, 
-				value: " Learn to learn learning",
+				value: "Review tech news",
 				date: "6:00 am",
 				checked: false,
 				editing: false
